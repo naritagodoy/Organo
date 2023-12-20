@@ -1,8 +1,15 @@
+import { IoCloseCircleOutline } from "react-icons/io5"
 import './colaborador.css'
 
-const Colaborador = ({nome, cargo, imagem, corDeFundo}) => {
+const Colaborador = ({colaborador, nome, cargo, imagem, corDeFundo, aoDeletar, id}) => {
     return (
         <div className='colaborador'> 
+            <IoCloseCircleOutline 
+            size={25} 
+            className='deletar' 
+            onClick={() => aoDeletar(colaborador.id)} 
+        />
+    
             <div className='cabecalho' style={{backgroundColor: corDeFundo}}> 
                 <img className='img' src={imagem} alt={nome}/>
             </div>

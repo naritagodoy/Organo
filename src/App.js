@@ -3,41 +3,48 @@ import Banner from './componentes/Banner';
 import Formulario from './componentes/Formulario';
 import Time from './componentes/Time';
 import Rodape from './componentes/Rodape';
+import { v4 as uuidv4 } from 'uuid';
 
 
 
 function App() {
 
-  const Times = [
+  const [times, setTimes] = useState ([
 
-    {
+    { id:uuidv4(),
       nome:'Parto domiciliar',
-      corPrimaria:'#57C278',
-      corSecundaria:'D9F7E9'
-    },
-    {
+      cor:'#57C278',
+  },
+    { id:uuidv4(),
       nome:'Parto hospitalar',
-      corPrimaria:'#82CFFA',
-      corSecundaria:'#E8F8FF'
-    },
-    {
+      cor:'#82CFFA',
+   },
+    { id:uuidv4(),
       nome:'Amamentação',
-      corPrimaria:'#A6D157',
-      corSecundaria:'#ADFF2F'
-    },
-    {
+      cor:'#A6D157',
+   },
+    { id:uuidv4(),
       nome:'Laserterapia',
-      corPrimaria:'#E06B69',
-      corSecundaria:'#FDE7E8'
-    },
-    {
+      cor:'#E06B69',
+   },
+    { id:uuidv4(),
       nome:'Humanização da assistência',
-      corPrimaria:'#DB6EBF',
-      corSecundaria:'#FAE9F5'
-    }
-  ]
+      cor:'#DB6EBF',
+   }
+  ])
   
+  function deletarColaborador(id) {
+    setColaboradores(colaboradores.filter(colaborador => colaborador.id !== id));
+  }
+  
+  function mudarCorDoTime (cor, id) {
+    setTimes(times.map(time => {
+      if(time.id === id)
+      time.cor = cor;
 
+      return time
+    }))
+  }
 
   const [colaboradores, setColaboradores] = useState ([''])
   const aoNovoColaboradorAdicionado = (colaborador) => {
@@ -51,18 +58,22 @@ function App() {
       </header>
       <div>
       <Formulario 
-      Times={Times.map(time => time.nome)} 
+      Times={times.map(time => time.nome)} 
       aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)}/>
       
       
-     {Times.map(time => <Time 
+     {times.map(time => <Time 
+     mudarCor={mudarCorDoTime}
      key={time.nome} 
      nome={time.nome} 
-     corPrimaria={time.corPrimaria} 
+     cor={time.cor} 
+     id={time.id}
      corSecundaria={time.corSecundaria}
      colaboradores={colaboradores.filter(colaborador => colaborador.Time === time.nome)}
-     
-     />)}  
+     aoDeletar={deletarColaborador}
+
+     />
+     )}  
     
     </div>
     <footer>

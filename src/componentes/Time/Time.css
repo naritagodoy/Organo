@@ -4,6 +4,7 @@
     text-align: center;
     padding: 32px;
     align-items: center;
+    position: relative;
     
     
 }
@@ -27,3 +28,9 @@
     align-items: center;
     justify-content: center;
 } 
+.input-color {
+    position: absolute;
+    right: 25px;
+    top: 25px;
+
+}
