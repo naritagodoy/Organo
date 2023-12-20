@@ -46,11 +46,22 @@ function App() {
     }))
   }
 
-  const [colaboradores, setColaboradores] = useState ([''])
+  const [colaboradores, setColaboradores] = useState ([])
   const aoNovoColaboradorAdicionado = (colaborador) => {
+        
         setColaboradores([...colaboradores, colaborador])
-  }
+        
+        setColaboradores((colaboradores) => {
+          
+          return colaboradores.map((colaborador, index) => ({
+            ...colaborador,
+            id: index + 1
+          }));
+        })}; 
 
+
+
+  console.log(colaboradores)
   return (
     <div className="banner">
       <header>

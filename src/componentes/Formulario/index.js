@@ -29,8 +29,7 @@ const Formulario = (props) => {
     const [Imagem, setImagem] = useState('')
     const [Time, setTime] = useState('')
 
-
-
+    
     return (
         <section className="formulario">
 

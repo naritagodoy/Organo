@@ -9,7 +9,7 @@ const Time = ({colaboradores, cor, nome, aoDeletar, mudarCor, id}) => {
     //console.log('time nome', Time.nome)
     return (
 
-        (colaboradores.length > 0) ? <section style={css} className='time'>
+        (colaboradores.length > 0) && <section style={css} className='time'>
             <div className='nome__time'>
             <input onChange={evento => {mudarCor(evento.target.value, id)}} value={Time.cor} type='color' className='input-color' />
             <h3 style={{ borderColor: cor }}>{nome}</h3>
@@ -21,7 +21,7 @@ const Time = ({colaboradores, cor, nome, aoDeletar, mudarCor, id}) => {
                 })}
             </div>
         </section>
-            : ''
+            
     )
 
 }
