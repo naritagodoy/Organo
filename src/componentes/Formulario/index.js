@@ -5,6 +5,7 @@ import ListaSuspensa from '../ListaSuspensa'
 import './Formulario.css'
 
 
+
 const Formulario = (props) => {
 
 
@@ -23,12 +24,25 @@ const Formulario = (props) => {
         setTime('')
     }
 
+    const aoSubmeter = (evento) => {
+        evento.preventDefault()
+        props.cadastrarTime({
+            NomeTime,
+            CorTime
+        })
+
+        setNomeTime('')
+        setCorTime('')
+    }
+
 
     const [Nome, setNome] = useState('')
     const [Cargo, setCargo] = useState('')
     const [Imagem, setImagem] = useState('')
     const [Time, setTime] = useState('')
-
+    const [NomeTime, setNomeTime] = useState('')
+    const [CorTime, setCorTime] = useState('')
+    
     
     return (
         <section className="formulario">
@@ -66,6 +80,31 @@ const Formulario = (props) => {
                 </Botao>
 
             </form>
+            
+            <form className="formulario" onSubmit={aoSubmeter}>
+
+                <h3> Preencha os dados abaixo para criar um novo time</h3>
+
+                <CampoTexto
+                    obrigatorio={true}
+                    label="Nome do Time" placeholder="Digite o nome do novo Time..."
+                    valor={NomeTime}
+                    aoAlterado={valor => setNomeTime(valor)}
+                />
+
+                <CampoTexto
+                    obrigatorio={true}
+                    label="Cor" placeholder="Digite a cor do novo Time.."
+                    valor={CorTime}
+                    aoAlterado={valor => setCorTime(valor)}
+                />
+                <Botao>
+                    Criar novo Time
+                </Botao>
+
+            </form>
+
+            
         </section>
     )
 
