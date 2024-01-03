@@ -50,6 +50,13 @@ function App() {
   function cadastrarTime(novoTime) {
     setTimes([...times, {...novoTime, id:uuidv4()}])
   }  
+
+  function resolverFavorito (id) {
+    setColaboradores(colaboradores.map(colaborador => {
+      if (colaborador.id === id) colaborador.favorito =! colaborador.favorito;
+      return colaborador 
+    }))
+  }
   
   const [colaboradores, setColaboradores] = useState ([])
   const aoNovoColaboradorAdicionado = (colaborador) => {
@@ -89,6 +96,7 @@ function App() {
      corSecundaria={time.corSecundaria}
      colaboradores={colaboradores.filter(colaborador => colaborador.Time === time.nome)}
      aoDeletar={deletarColaborador}
+     aoFavoritar={resolverFavorito}
 
      />
      )}  

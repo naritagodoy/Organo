@@ -1,6 +1,6 @@
 .formulario {
     display: flex;
-    
+    flex-wrap: wrap;
     justify-content: center;
     margin: 80px 0;
     margin-top: 50px;
@@ -19,6 +19,7 @@
 @media screen and (max-widht:920px) {
 
     .formulario{
+    
         margin-top: 5px;
         padding-top: 5px;
     }

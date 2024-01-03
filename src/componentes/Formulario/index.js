@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Botao from '../Botao/Index'
-import CampoTexto from '../CampoTexto'
+import Campo from '../Campo'
 import ListaSuspensa from '../ListaSuspensa'
 import './Formulario.css'
 
@@ -27,8 +27,8 @@ const Formulario = (props) => {
     const aoSubmeter = (evento) => {
         evento.preventDefault()
         props.cadastrarTime({
-            NomeTime,
-            CorTime
+            nome: NomeTime,
+            cor: CorTime
         })
 
         setNomeTime('')
@@ -49,21 +49,21 @@ const Formulario = (props) => {
 
             <form onSubmit={aoSalvar}>
                 <h2> Preencha os dados abaixo para criar o card do colaborador</h2>
-                <CampoTexto
+                <Campo
                     obrigatorio={true}
                     label="Nome" placeholder="Digite o seu nome..."
                     valor={Nome}
                     aoAlterado={valor => setNome(valor)}
                 />
 
-                <CampoTexto
+                <Campo
                     obrigatorio={true}
                     label="Cargo" placeholder="Digite o seu cargo..."
                     valor={Cargo}
                     aoAlterado={valor => setCargo(valor)}
                 />
 
-                <CampoTexto
+                <Campo
                     label="Imagem" placeholder="Digite o endereço da imagem..."
                     valor={Imagem}
                     aoAlterado={valor => setImagem(valor)}
@@ -85,16 +85,18 @@ const Formulario = (props) => {
 
                 <h3> Preencha os dados abaixo para criar um novo time</h3>
 
-                <CampoTexto
+                <Campo
                     obrigatorio={true}
                     label="Nome do Time" placeholder="Digite o nome do novo Time..."
                     valor={NomeTime}
                     aoAlterado={valor => setNomeTime(valor)}
                 />
 
-                <CampoTexto
+                <Campo
                     obrigatorio={true}
-                    label="Cor" placeholder="Digite a cor do novo Time.."
+                    type='color'
+                    label="Cor" 
+                    placeholder="Digite a cor do novo Time.."
                     valor={CorTime}
                     aoAlterado={valor => setCorTime(valor)}
                 />
